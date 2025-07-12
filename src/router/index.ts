@@ -1,3 +1,4 @@
+import CityController from './city.controller'
 import CityzenController from './cityzen.controller'
 
-export { CityzenController }
+export { CityController, CityzenController }

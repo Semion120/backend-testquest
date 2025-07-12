@@ -4,12 +4,12 @@ import {
   MikroORM,
   RequestContext,
 } from '@mikro-orm/mongodb'
+import cors from 'cors'
 import express from 'express'
 import http from 'http'
 import config from './database/config'
 import { Citizen, City } from './database/models'
-import { CityzenController } from './router'
-import CityController from './router/city.controller'
+import { CityController, CityzenController } from './router'
 
 export const AppInterface = {} as {
   server: http.Server
@@ -20,6 +20,18 @@ export const AppInterface = {} as {
 }
 
 export const app = express()
+const corsOptions = {
+  origin: ['https://convert-file.ru', 'https://api.convert-file.ru'],
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  optionsSuccessStatus: 200,
+  allowedHeaders: [
+    'Accept-Version',
+    'Authorization',
+    'Credentials',
+    'Content-Type',
+  ],
+}
+app.use(cors(corsOptions))
 const port = process.env.PORT || 3000
 
 export const init = (async () => {
