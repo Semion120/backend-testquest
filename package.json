@@ -1,0 +1,22 @@
+{
+  "scripts": {
+    "watch-ts": "tsc -w --skipLibCheck",
+    "build-ts": "tsc --skipLibCheck || true",
+    "pretty": "prettier --check src",
+    "lint": "npm run pretty && eslint --max-warnings 0 --ext ts,tsx,json ",
+    "dist": "npm run build-ts && node dist/server.js",
+    "dev": "concurrently -i -k -p \"[{name}]\" -n \"Node, TypeScript\" -c \"yellow.bold,cyan.bold\" \"npm run watch-js\" \"npm run watch-ts\"",
+    "watch-js": "nodemon dist/server.js -d 1",
+    "test": "npm run jest --forceExit"
+  },
+  "dependencies": {
+    "@mikro-orm/mongodb": "^6.4.16",
+    "dotenv": "^17.2.0",
+    "express": "^5.1.0",
+    "typescript": "^5.8.3"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.3",
+    "@types/node": "^24.0.13"
+  }
+}
