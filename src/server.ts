@@ -21,7 +21,13 @@ export const AppInterface = {} as {
 
 export const app = express()
 const corsOptions = {
-  origin: ['https://convert-file.ru', 'https://api.convert-file.ru'],
+  origin: [
+    'https://convert-file.ru',
+    'https://api.convert-file.ru',
+    'http://convert-file.ru',
+    'http://api.convert-file.ru',
+    'http://localhost:5173',
+  ],
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   optionsSuccessStatus: 200,
   allowedHeaders: [
